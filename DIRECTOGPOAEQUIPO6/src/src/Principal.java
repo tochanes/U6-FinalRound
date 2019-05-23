@@ -53,9 +53,19 @@ public class Principal extends javax.swing.JFrame {
         jMenu2.add(opcAltas);
 
         opcModifiacion.setText("Modificacion");
+        opcModifiacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcModifiacionActionPerformed(evt);
+            }
+        });
         jMenu2.add(opcModifiacion);
 
         opcBajas.setText("Baja");
+        opcBajas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcBajasActionPerformed(evt);
+            }
+        });
         jMenu2.add(opcBajas);
 
         jMenuBar1.add(jMenu2);
@@ -94,6 +104,16 @@ public class Principal extends javax.swing.JFrame {
     private void opcSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcSalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_opcSalirActionPerformed
+
+    private void opcModifiacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcModifiacionActionPerformed
+        FrmModificacion fm = new FrmModificacion(this, true);
+        fm.setVisible(true);
+    }//GEN-LAST:event_opcModifiacionActionPerformed
+
+    private void opcBajasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcBajasActionPerformed
+        FrmBajas fb = new FrmBajas(this, true);
+        fb.setVisible(true);
+    }//GEN-LAST:event_opcBajasActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

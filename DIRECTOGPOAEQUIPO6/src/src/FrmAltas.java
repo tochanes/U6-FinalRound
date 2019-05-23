@@ -172,6 +172,11 @@ public class FrmAltas extends javax.swing.JDialog {
         try {
             clave = Integer.parseInt(txtClave.getText());
             nombre = txtNombre.getText();
+            
+            //Subtraer los primeros 40 caracteres del nombre, si esté es superior a 40
+            if(nombre.length() > 40)
+                nombre = nombre.substring(0, 40);
+            
             titulo = txtTitulo.getText();
             departamento = txtDepartamento.getText();
             horas = Integer.parseInt(txtHoras.getText());

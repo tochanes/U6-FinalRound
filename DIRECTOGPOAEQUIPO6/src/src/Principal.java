@@ -76,6 +76,11 @@ public class Principal extends javax.swing.JFrame {
         jMenu3.add(opcIndividual);
 
         opcGeneral.setText("General");
+        opcGeneral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcGeneralActionPerformed(evt);
+            }
+        });
         jMenu3.add(opcGeneral);
 
         jMenuBar1.add(jMenu3);
@@ -114,6 +119,11 @@ public class Principal extends javax.swing.JFrame {
         FrmBajas fb = new FrmBajas(this, true);
         fb.setVisible(true);
     }//GEN-LAST:event_opcBajasActionPerformed
+
+    private void opcGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcGeneralActionPerformed
+        FrmConsGenrl cg = new FrmConsGenrl(this, true);
+        cg.setVisible(true);
+    }//GEN-LAST:event_opcGeneralActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

@@ -10,7 +10,36 @@ public class AdmonProfesores {
 
     public AdmonProfesores() {
         raf = null;
-        tamRegistro = 50;
+        tamRegistro = 114;
+    }
+    
+    public int getCont(){
+        int clave, x = 1, cont = 0;
+        try{
+            raf = new RandomAccessFile("Datos.dat", "rw");
+            do{
+                raf.seek(x * tamRegistro - tamRegistro);
+                clave = raf.readInt();
+                
+                if(clave != 0)
+                    cont++;
+                x++;    
+            }while(true);
+        }catch(EOFException e){}
+        catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), 
+                            "EXCEPCION", JOptionPane.ERROR_MESSAGE);
+        }
+        finally {
+            try{
+                if(raf != null)
+                    raf.close();
+            }catch(IOException e){
+                JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), 
+                            "EXCEPCION", JOptionPane.ERROR_MESSAGE);
+            }
+            return cont;
+        }
     }
     
     public int getCelda(int clave){
@@ -23,14 +52,16 @@ public class AdmonProfesores {
                 return celda;
         }catch(EOFException e){}
         catch (IOException e) {
-            System.out.println("Error: " + e.getMessage()); 
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), 
+                            "EXCEPCION", JOptionPane.ERROR_MESSAGE);
         }
         finally {
             try{
                 if(raf != null)
                     raf.close();
             }catch(IOException e){
-                System.out.println("Error: " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), 
+                            "EXCEPCION", JOptionPane.ERROR_MESSAGE);
             }
         }
         return -1;
@@ -46,14 +77,16 @@ public class AdmonProfesores {
             raf.writeUTF(pf.getDepartamento());
             raf.writeInt(pf.getHoras());
         } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), 
+                            "EXCEPCION", JOptionPane.ERROR_MESSAGE);
         }
         finally {
             try {
                 if(raf != null)
                     raf.close();
             } catch (IOException e) {
-                System.out.println("Error: " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), 
+                            "EXCEPCION", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -71,14 +104,16 @@ public class AdmonProfesores {
             p = new Profesor(clave, nombre, titulo, departamento, horas);
         } catch (EOFException e){
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), 
+                            "EXCEPCION", JOptionPane.ERROR_MESSAGE);
         }
         finally {
             try {
                 if(raf != null)
                     raf.close();
             } catch (IOException e) {
-                System.out.println("Error: " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), 
+                            "EXCEPCION", JOptionPane.ERROR_MESSAGE);
             }
             return p;
         }    
@@ -90,14 +125,16 @@ public class AdmonProfesores {
             raf.seek(pf.getClave() * tamRegistro - tamRegistro);
             raf.writeInt(0);
         } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), 
+                            "EXCEPCION", JOptionPane.ERROR_MESSAGE);
         }
         finally {
             try {
                 if(raf != null)
                     raf.close();
             } catch (IOException e) {
-                System.out.println("Error: " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), 
+                            "EXCEPCION", JOptionPane.ERROR_MESSAGE);
             }
         }
     }

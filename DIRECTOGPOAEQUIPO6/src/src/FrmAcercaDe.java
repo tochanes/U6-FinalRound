@@ -38,6 +38,11 @@ public class FrmAcercaDe extends javax.swing.JDialog {
         setModal(true);
         setPreferredSize(new java.awt.Dimension(350, 450));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         b0a.setFont(new java.awt.Font("Century Gothic", 2, 12)); // NOI18N
@@ -45,7 +50,7 @@ public class FrmAcercaDe extends javax.swing.JDialog {
         b0a.setText("El TEC o ITCG ");
         b0a.setBorderPainted(false);
         b0a.setContentAreaFilled(false);
-        b0a.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b0a.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         b0a.setDefaultCapable(false);
         b0a.setFocusPainted(false);
         b0a.setFocusable(false);
@@ -61,7 +66,7 @@ public class FrmAcercaDe extends javax.swing.JDialog {
         b1a.setText("Profe Chema");
         b1a.setBorderPainted(false);
         b1a.setContentAreaFilled(false);
-        b1a.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b1a.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         b1a.setDefaultCapable(false);
         b1a.setFocusPainted(false);
         b1a.setFocusable(false);
@@ -77,7 +82,7 @@ public class FrmAcercaDe extends javax.swing.JDialog {
         b3.setText("Alvaro Rosales Damian");
         b3.setBorderPainted(false);
         b3.setContentAreaFilled(false);
-        b3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         b3.setDefaultCapable(false);
         b3.setFocusPainted(false);
         b3.setFocusable(false);
@@ -93,7 +98,7 @@ public class FrmAcercaDe extends javax.swing.JDialog {
         b4.setText("Jose Manuel Gomez Diaz");
         b4.setBorderPainted(false);
         b4.setContentAreaFilled(false);
-        b4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         b4.setDefaultCapable(false);
         b4.setFocusPainted(false);
         b4.setFocusable(false);
@@ -109,7 +114,7 @@ public class FrmAcercaDe extends javax.swing.JDialog {
         b0.setText("Intituto Tecnologico de Ciudad Guzman");
         b0.setBorderPainted(false);
         b0.setContentAreaFilled(false);
-        b0.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b0.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         b0.setDefaultCapable(false);
         b0.setFocusPainted(false);
         b0.setFocusable(false);
@@ -125,7 +130,7 @@ public class FrmAcercaDe extends javax.swing.JDialog {
         b2.setText("Juan Pablo Solis Guzman");
         b2.setBorderPainted(false);
         b2.setContentAreaFilled(false);
-        b2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         b2.setDefaultCapable(false);
         b2.setFocusPainted(false);
         b2.setFocusable(false);
@@ -141,7 +146,7 @@ public class FrmAcercaDe extends javax.swing.JDialog {
         b4a.setText("Gomez");
         b4a.setBorderPainted(false);
         b4a.setContentAreaFilled(false);
-        b4a.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b4a.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         b4a.setDefaultCapable(false);
         b4a.setFocusPainted(false);
         b4a.setFocusable(false);
@@ -157,7 +162,7 @@ public class FrmAcercaDe extends javax.swing.JDialog {
         b2a.setText("Jan Pol");
         b2a.setBorderPainted(false);
         b2a.setContentAreaFilled(false);
-        b2a.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b2a.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         b2a.setDefaultCapable(false);
         b2a.setFocusPainted(false);
         b2a.setFocusable(false);
@@ -173,7 +178,7 @@ public class FrmAcercaDe extends javax.swing.JDialog {
         b3a.setText("Grillo");
         b3a.setBorderPainted(false);
         b3a.setContentAreaFilled(false);
-        b3a.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b3a.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         b3a.setDefaultCapable(false);
         b3a.setFocusPainted(false);
         b3a.setFocusable(false);
@@ -189,7 +194,7 @@ public class FrmAcercaDe extends javax.swing.JDialog {
         b1.setText("Prof: Jose Maria Amezcua Castrejon");
         b1.setBorderPainted(false);
         b1.setContentAreaFilled(false);
-        b1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        b1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         b1.setDefaultCapable(false);
         b1.setFocusPainted(false);
         b1.setFocusable(false);
@@ -212,7 +217,7 @@ public class FrmAcercaDe extends javax.swing.JDialog {
         jButton1.setText(" Registro de Profesores Tecnologico de Zapotlan, All Rigths Reserved, v 3.0.0, 2019 ");
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.setDefaultCapable(false);
         jButton1.setFocusPainted(false);
         jButton1.setFocusable(false);
@@ -232,10 +237,11 @@ public class FrmAcercaDe extends javax.swing.JDialog {
         br.setMaximumSize(new java.awt.Dimension(400, 350));
         br.setMinimumSize(new java.awt.Dimension(400, 350));
         br.setPreferredSize(new java.awt.Dimension(400, 350));
-        getContentPane().add(br, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, -40, 530, 680));
+        getContentPane().add(br, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, -40, 510, 680));
         br.getAccessibleContext().setAccessibleDescription("");
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void b0aActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b0aActionPerformed
@@ -281,6 +287,10 @@ public class FrmAcercaDe extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         br1.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        this.dispose();
+    }//GEN-LAST:event_formWindowClosed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton b0;

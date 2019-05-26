@@ -1,5 +1,7 @@
 package src;
 
+import javax.swing.JOptionPane;
+
 public class Principal extends javax.swing.JFrame {
     
     public static AdmonProfesores ap = new AdmonProfesores();
@@ -50,7 +52,7 @@ public class Principal extends javax.swing.JFrame {
         bienvenida.setText("BIENVENIDO");
         bienvenida.setBorderPainted(false);
         bienvenida.setContentAreaFilled(false);
-        bienvenida.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bienvenida.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         bienvenida.setDefaultCapable(false);
         bienvenida.setFocusPainted(false);
         bienvenida.addActionListener(new java.awt.event.ActionListener() {
@@ -65,7 +67,7 @@ public class Principal extends javax.swing.JFrame {
         usuario.setText("Estimado Usuario");
         usuario.setBorderPainted(false);
         usuario.setContentAreaFilled(false);
-        usuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        usuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         usuario.setDefaultCapable(false);
         usuario.setFocusPainted(false);
         usuario.setFocusable(false);
@@ -85,7 +87,7 @@ public class Principal extends javax.swing.JFrame {
 
         opcAcercaDe.setFont(new java.awt.Font("Century Gothic", 2, 12)); // NOI18N
         opcAcercaDe.setText("Acerca de...");
-        opcAcercaDe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        opcAcercaDe.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         opcAcercaDe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcAcercaDeActionPerformed(evt);
@@ -95,7 +97,7 @@ public class Principal extends javax.swing.JFrame {
 
         opcSalir.setFont(new java.awt.Font("Century Gothic", 2, 12)); // NOI18N
         opcSalir.setText("Salir");
-        opcSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        opcSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         opcSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcSalirActionPerformed(evt);
@@ -110,7 +112,7 @@ public class Principal extends javax.swing.JFrame {
 
         opcAltas.setFont(new java.awt.Font("Century Gothic", 2, 12)); // NOI18N
         opcAltas.setText("Altas");
-        opcAltas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        opcAltas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         opcAltas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcAltasActionPerformed(evt);
@@ -120,7 +122,7 @@ public class Principal extends javax.swing.JFrame {
 
         opcModifiacion.setFont(new java.awt.Font("Century Gothic", 2, 12)); // NOI18N
         opcModifiacion.setText("Modificacion");
-        opcModifiacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        opcModifiacion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         opcModifiacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcModifiacionActionPerformed(evt);
@@ -144,7 +146,7 @@ public class Principal extends javax.swing.JFrame {
 
         opcIndividual.setFont(new java.awt.Font("Century Gothic", 2, 12)); // NOI18N
         opcIndividual.setText("Individual");
-        opcIndividual.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        opcIndividual.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         opcIndividual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcIndividualActionPerformed(evt);
@@ -154,7 +156,12 @@ public class Principal extends javax.swing.JFrame {
 
         opcGeneral.setFont(new java.awt.Font("Century Gothic", 2, 12)); // NOI18N
         opcGeneral.setText("General");
-        opcGeneral.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        opcGeneral.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        opcGeneral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcGeneralActionPerformed(evt);
+            }
+        });
         jMenu3.add(opcGeneral);
 
         jMenuBar1.add(jMenu3);
@@ -165,8 +172,14 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void opcAltasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcAltasActionPerformed
-        FrmAltas vis = new FrmAltas(this, true);
-        vis.setVisible(true);
+        if(ap.getCont() < 65){
+            FrmAltas vis = new FrmAltas(this, true);
+            vis.setVisible(true);
+        }
+        else{
+           JOptionPane.showMessageDialog(this, "La agenda ya esta llena",
+                        "AGENDA LLENA", JOptionPane.INFORMATION_MESSAGE);
+       }
     }//GEN-LAST:event_opcAltasActionPerformed
 
     private void opcSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcSalirActionPerformed
@@ -174,19 +187,36 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_opcSalirActionPerformed
 
     private void opcModifiacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcModifiacionActionPerformed
-        FrmModificacion fm = new FrmModificacion(this, true);
-        fm.setVisible(true);
+        if(ap.getCont() > 0){
+            FrmModificacion fm = new FrmModificacion(this, true);
+            fm.setVisible(true);
+        }
+        else{
+           JOptionPane.showMessageDialog(this, "No hay profesores registrados",
+                        "AGENDA VACIA", JOptionPane.INFORMATION_MESSAGE);
+       }
     }//GEN-LAST:event_opcModifiacionActionPerformed
 
     private void opcBajasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcBajasActionPerformed
-        FrmBajas fb = new FrmBajas(this, true);
-        fb.setVisible(true);
+        if(ap.getCont() > 0){
+            FrmBajas fb = new FrmBajas(this, true);
+            fb.setVisible(true);
+        }
+        else{
+           JOptionPane.showMessageDialog(this, "No hay profesores registrados",
+                        "AGENDA VACIA", JOptionPane.INFORMATION_MESSAGE);
+       }
     }//GEN-LAST:event_opcBajasActionPerformed
 
     private void opcIndividualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcIndividualActionPerformed
-        FrmConsIndividual ci = new FrmConsIndividual(this, true);
-        ci.setVisible(true);
-        ci.setResizable(false);
+        if(ap.getCont() > 0){
+            FrmConsIndividual ci = new FrmConsIndividual(this, true);
+            ci.setVisible(true);
+        }
+        else{
+           JOptionPane.showMessageDialog(this, "No hay profesores registrados",
+                        "AGENDA VACIA", JOptionPane.INFORMATION_MESSAGE);
+       }
     }//GEN-LAST:event_opcIndividualActionPerformed
 
     private void bienvenidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bienvenidaActionPerformed
@@ -201,6 +231,17 @@ public class Principal extends javax.swing.JFrame {
         FrmAcercaDe acd = new FrmAcercaDe(this, true);
         acd.setVisible(true);
     }//GEN-LAST:event_opcAcercaDeActionPerformed
+
+    private void opcGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcGeneralActionPerformed
+       if(ap.getCont() > 0){
+            FrmConsGeneral fcc = new FrmConsGeneral(this, true);
+            fcc.setVisible(true);
+       } 
+       else{
+           JOptionPane.showMessageDialog(this, "No hay profesores registrados",
+                        "AGENDA VACIA", JOptionPane.INFORMATION_MESSAGE);
+       }
+    }//GEN-LAST:event_opcGeneralActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {

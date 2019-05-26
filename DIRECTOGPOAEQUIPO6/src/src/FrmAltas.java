@@ -32,6 +32,11 @@ public class FrmAltas extends javax.swing.JDialog {
         setTitle("ALTAS");
         setPreferredSize(new java.awt.Dimension(400, 350));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 3, 11)); // NOI18N
@@ -63,25 +68,25 @@ public class FrmAltas extends javax.swing.JDialog {
 
         txtNombre.setEditable(false);
         txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        txtNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtNombre.setOpaque(false);
         getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 85, 203, -1));
 
         txtTitulo.setEditable(false);
         txtTitulo.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        txtTitulo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtTitulo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtTitulo.setOpaque(false);
         getContentPane().add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 117, 203, -1));
 
         txtDepartamento.setEditable(false);
         txtDepartamento.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        txtDepartamento.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtDepartamento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtDepartamento.setOpaque(false);
         getContentPane().add(txtDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 156, 203, -1));
 
         txtHoras.setEditable(false);
         txtHoras.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        txtHoras.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtHoras.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtHoras.setOpaque(false);
         getContentPane().add(txtHoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 195, 203, -1));
 
@@ -107,6 +112,7 @@ public class FrmAltas extends javax.swing.JDialog {
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-130, -570, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -128,7 +134,7 @@ public class FrmAltas extends javax.swing.JDialog {
             }
             else{
                 JOptionPane.showMessageDialog(this, "Clave existente",
-                        "Repetida", JOptionPane.INFORMATION_MESSAGE);
+                        "REPETIDA", JOptionPane.INFORMATION_MESSAGE);
             }
         }
         else{
@@ -151,8 +157,14 @@ public class FrmAltas extends javax.swing.JDialog {
         try {
             clave = Integer.parseInt(txtClave.getText());
             nombre = txtNombre.getText();
+                if(nombre.length() > 40)
+                    nombre = nombre.substring(0, 40);
             titulo = txtTitulo.getText();
+                if(titulo.length() > 30)
+                    titulo = titulo.substring(0, 30);
             departamento = txtDepartamento.getText();
+                if(departamento.length() > 30)
+                    departamento = departamento.substring(0, 30);
             horas = Integer.parseInt(txtHoras.getText());
             
             Profesor pf = new Profesor(clave, nombre, titulo, departamento, horas);
@@ -171,6 +183,10 @@ public class FrmAltas extends javax.swing.JDialog {
                             "SITUACIÓN ANOMALA", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        this.dispose();
+    }//GEN-LAST:event_formWindowClosed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;

@@ -1,5 +1,6 @@
 package src;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 public class FrmBajas extends javax.swing.JDialog {
@@ -10,6 +11,60 @@ public class FrmBajas extends javax.swing.JDialog {
         initComponents();
     }
 
+    public void accionBuscar(){
+        try{
+        int clave, celda;
+        clave = Integer.parseInt(txtClave.getText());
+        if(clave > 0 && clave < 66){
+            celda = Principal.ap.getCelda(clave);
+            if(celda != -1){
+                p = Principal.ap.getProfesor(celda);
+                txtClave.setEditable(false);
+                btnBuscar.setEnabled(false);
+                txtNombre.setText(p.getNombre());
+                txtTitulo.setText(p.getTitulo());
+                txtDepartamento.setText(p.getDepartamento());
+                txtHoras.setText(Integer.toString(p.getHoras()));
+                btnEliminar.setEnabled(true);
+                btnEliminar.requestFocus();
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Clave inexistente",
+                        "INEXISTENTE", JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Ingrese una clave de 1 a 65", 
+                            "CLAVE FUERA DE RANGO", JOptionPane.ERROR_MESSAGE);
+        }
+        }catch(NumberFormatException nfe){
+            JOptionPane.showMessageDialog(this, "Ingresa solamente numeros enteros ", 
+                            "CARÁCTER INVALIDO", JOptionPane.ERROR_MESSAGE);  
+        }catch(RuntimeException e){
+            JOptionPane.showMessageDialog(this, "Situacion anomala en tiempo de ejecución, vuelve a intentarlo", 
+                            "SITUACION ANOMALA", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void accionEliminar(){
+        int respuesta = JOptionPane.showConfirmDialog(this, "Esta seguro de eliminarlo", 
+                "Confirmando eliminacion", 
+                JOptionPane.YES_NO_OPTION, 
+                JOptionPane.QUESTION_MESSAGE,
+                null);
+        if(respuesta == JOptionPane.YES_OPTION){
+            Principal.ap.eliminar(p);
+            JOptionPane.showMessageDialog(this, "El profesor a sido eliminado satisfactoriamente", 
+                        "ELIMINACION EXITOSA", JOptionPane.ERROR_MESSAGE);
+        }else{
+              JOptionPane.showMessageDialog(this, "No se ha realizado la eliminación", 
+                        "ELIMINACION CANCELADA", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        this.dispose();
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -26,7 +81,7 @@ public class FrmBajas extends javax.swing.JDialog {
         txtDepartamento = new javax.swing.JTextField();
         txtHoras = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
-        btnModificar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -66,29 +121,43 @@ public class FrmBajas extends javax.swing.JDialog {
 
         txtClave.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         txtClave.setOpaque(false);
+        txtClave.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtClaveKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 31, 130, -1));
 
         txtNombre.setEditable(false);
         txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        txtNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtNombre.setOpaque(false);
-        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 60, 205, -1));
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 60, 250, -1));
 
         txtTitulo.setEditable(false);
         txtTitulo.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        txtTitulo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtTitulo.setOpaque(false);
-        getContentPane().add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 92, 205, -1));
+        getContentPane().add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 92, 250, -1));
 
         txtDepartamento.setEditable(false);
         txtDepartamento.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        txtDepartamento.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtDepartamento.setOpaque(false);
-        getContentPane().add(txtDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 124, 203, -1));
+        getContentPane().add(txtDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 124, 250, -1));
 
         txtHoras.setEditable(false);
         txtHoras.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        txtHoras.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtHoras.setOpaque(false);
-        getContentPane().add(txtHoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 156, 203, -1));
+        getContentPane().add(txtHoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 156, 250, -1));
 
         btnBuscar.setText("Buscar");
+        btnBuscar.setBorderPainted(false);
+        btnBuscar.setContentAreaFilled(false);
+        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscar.setDefaultCapable(false);
+        btnBuscar.setFocusPainted(false);
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
@@ -96,14 +165,24 @@ public class FrmBajas extends javax.swing.JDialog {
         });
         getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 31, -1, -1));
 
-        btnModificar.setText("Eliminar");
-        btnModificar.setEnabled(false);
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setBorderPainted(false);
+        btnEliminar.setContentAreaFilled(false);
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.setDefaultCapable(false);
+        btnEliminar.setEnabled(false);
+        btnEliminar.setFocusPainted(false);
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 188, 190, -1));
+        btnEliminar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnEliminarKeyPressed(evt);
+            }
+        });
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 188, 190, -1));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         fondo.setText(" ");
@@ -114,65 +193,30 @@ public class FrmBajas extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        try{
-        int clave, celda;
-        clave = Integer.parseInt(txtClave.getText());
-        if(clave > 0 && clave < 66){
-            celda = Principal.ap.getCelda(clave);
-            if(celda != -1){
-                p = Principal.ap.getProfesor(celda);
-                txtClave.setEditable(false);
-                btnBuscar.setEnabled(false);
-                txtNombre.setText(p.getNombre());
-                txtTitulo.setText(p.getTitulo());
-                txtDepartamento.setText(p.getDepartamento());
-                txtHoras.setText(Integer.toString(p.getHoras()));
-                btnModificar.setEnabled(true);
-                txtNombre.requestFocus();
-            }
-            else{
-                JOptionPane.showMessageDialog(this, "Clave inexistente",
-                        "INEXISTENTE", JOptionPane.INFORMATION_MESSAGE);
-            }
-        }
-        else{
-            JOptionPane.showMessageDialog(this, "Ingrese una clave de 1 a 65", 
-                            "CLAVE FUERA DE RANGO", JOptionPane.ERROR_MESSAGE);
-        }
-        }catch(NumberFormatException nfe){
-            JOptionPane.showMessageDialog(this, "Ingresa solamente numeros enteros ", 
-                            "CARÁCTER INVALIDO", JOptionPane.ERROR_MESSAGE);  
-        }catch(RuntimeException e){
-            JOptionPane.showMessageDialog(this, "Situacion anomala en tiempo de ejecución, vuelve a intentarlo", 
-                            "SITUACION ANOMALA", JOptionPane.ERROR_MESSAGE);
-        }
+        accionBuscar();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        int respuesta = JOptionPane.showConfirmDialog(this, "Esta seguro de eliminarlo", 
-                "Confirmando eliminacion", 
-                JOptionPane.YES_NO_OPTION, 
-                JOptionPane.QUESTION_MESSAGE,
-                null);
-        if(respuesta == JOptionPane.YES_OPTION){
-            Principal.ap.eliminar(p);
-            JOptionPane.showMessageDialog(this, "El profesor a sido eliminado satisfactoriamente", 
-                        "ELIMINACION EXITOSA", JOptionPane.ERROR_MESSAGE);
-        }else{
-              JOptionPane.showMessageDialog(this, "No se ha realizado la eliminación", 
-                        "ELIMINACION CANCELADA", JOptionPane.ERROR_MESSAGE);
-        }
-        
-        this.dispose();
-    }//GEN-LAST:event_btnModificarActionPerformed
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        accionEliminar();
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         this.dispose();
     }//GEN-LAST:event_formWindowClosed
 
+    private void txtClaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtClaveKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER)
+            accionBuscar();
+    }//GEN-LAST:event_txtClaveKeyPressed
+
+    private void btnEliminarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnEliminarKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER)
+            accionEliminar();
+    }//GEN-LAST:event_btnEliminarKeyPressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -1,5 +1,6 @@
 package src;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 public class FrmModificacion extends javax.swing.JDialog {
@@ -9,6 +10,81 @@ public class FrmModificacion extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
+    
+    public void accionBuscar(){
+        try{
+        int clave, celda;
+        clave = Integer.parseInt(txtClave.getText());
+        if(clave > 0 && clave < 66){
+            celda = Principal.ap.getCelda(clave);
+            if(celda != -1){
+                p = Principal.ap.getProfesor(celda);
+                txtClave.setEditable(false);
+                btnBuscar.setEnabled(false);
+                txtNombre.setEditable(true);
+                txtTitulo.setEditable(true);
+                txtDepartamento.setEditable(true);
+                txtHoras.setEditable(true);
+                txtNombre.setText(p.getNombre());
+                txtTitulo.setText(p.getTitulo());
+                txtDepartamento.setText(p.getDepartamento());
+                txtHoras.setText(Integer.toString(p.getHoras()));
+                btnModificar.setEnabled(true);
+                txtNombre.requestFocus();
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Clave inexistente",
+                        "INEXISTENTE", JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Ingrese una clave de 1 a 65", 
+                            "CLAVE FUERA DE RANGO", JOptionPane.ERROR_MESSAGE);
+        }
+        }catch(NumberFormatException nfe){
+            JOptionPane.showMessageDialog(this, "Ingresa solamente numeros enteros ", 
+                            "CARÁCTER INVALIDO", JOptionPane.ERROR_MESSAGE);  
+        }catch(RuntimeException e){
+            JOptionPane.showMessageDialog(this, "Situacion anomala en tiempo de ejecución, vuelve a intentarlo", 
+                            "SITUACION ANOMALA", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void accionModificar(){
+        int clave, horas;
+        String nombre, departamento, titulo;
+        
+        try {
+            clave = Integer.parseInt(txtClave.getText());
+            nombre = txtNombre.getText();
+                if(nombre.length() > 40)
+                    nombre = nombre.substring(0, 40);
+            titulo = txtTitulo.getText();
+                if(titulo.length() > 30)
+                    titulo = titulo.substring(0, 30);
+            departamento = txtDepartamento.getText();
+                if(departamento.length() > 30)
+                    departamento = departamento.substring(0, 30);
+            horas = Integer.parseInt(txtHoras.getText());
+            
+            p = new Profesor(clave, nombre, titulo, departamento, horas);
+            Principal.ap.escribir(p);
+            
+            JOptionPane.showMessageDialog(this, "Modificado con exito",
+                        "MODIFICADO", JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+            
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(this, "Ingresa solamente numeros enteros donde corresponda", 
+                            "CARÁCTER INVALIDO", JOptionPane.ERROR_MESSAGE);
+        }
+        catch(RuntimeException e){
+            JOptionPane.showMessageDialog(this, "Situacion anomala en tiempo de ejecución, vuelve a intentarlo", 
+                            "SITUACIÓN ANOMALA", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -65,29 +141,48 @@ public class FrmModificacion extends javax.swing.JDialog {
 
         txtClave.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         txtClave.setOpaque(false);
+        txtClave.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtClaveKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 32, 122, -1));
 
         txtNombre.setEditable(false);
         txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        txtNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtNombre.setOpaque(false);
-        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 61, 205, -1));
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 61, 250, -1));
 
         txtTitulo.setEditable(false);
         txtTitulo.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        txtTitulo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtTitulo.setOpaque(false);
-        getContentPane().add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 93, 205, -1));
+        getContentPane().add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 93, 250, -1));
 
         txtDepartamento.setEditable(false);
         txtDepartamento.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        txtDepartamento.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtDepartamento.setOpaque(false);
-        getContentPane().add(txtDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 125, 203, -1));
+        getContentPane().add(txtDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 125, 250, -1));
 
         txtHoras.setEditable(false);
         txtHoras.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        txtHoras.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtHoras.setOpaque(false);
-        getContentPane().add(txtHoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 157, 203, -1));
+        txtHoras.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtHorasKeyPressed(evt);
+            }
+        });
+        getContentPane().add(txtHoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 157, 250, -1));
 
         btnBuscar.setText("Buscar");
+        btnBuscar.setBorderPainted(false);
+        btnBuscar.setContentAreaFilled(false);
+        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscar.setDefaultCapable(false);
+        btnBuscar.setFocusPainted(false);
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
@@ -96,7 +191,12 @@ public class FrmModificacion extends javax.swing.JDialog {
         getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 32, -1, -1));
 
         btnModificar.setText("Modificar");
+        btnModificar.setBorderPainted(false);
+        btnModificar.setContentAreaFilled(false);
+        btnModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModificar.setDefaultCapable(false);
         btnModificar.setEnabled(false);
+        btnModificar.setFocusPainted(false);
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
@@ -113,81 +213,26 @@ public class FrmModificacion extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        try{
-        int clave, celda;
-        clave = Integer.parseInt(txtClave.getText());
-        if(clave > 0 && clave < 66){
-            celda = Principal.ap.getCelda(clave);
-            if(celda != -1){
-                p = Principal.ap.getProfesor(celda);
-                txtClave.setEditable(false);
-                btnBuscar.setEnabled(false);
-                txtNombre.setEditable(true);
-                txtTitulo.setEditable(true);
-                txtDepartamento.setEditable(true);
-                txtHoras.setEditable(true);
-                txtNombre.setText(p.getNombre());
-                txtTitulo.setText(p.getTitulo());
-                txtDepartamento.setText(p.getDepartamento());
-                txtHoras.setText(Integer.toString(p.getHoras()));
-                btnModificar.setEnabled(true);
-                txtNombre.requestFocus();
-            }
-            else{
-                JOptionPane.showMessageDialog(this, "Clave inexistente",
-                        "INEXISTENTE", JOptionPane.INFORMATION_MESSAGE);
-            }
-        }
-        else{
-            JOptionPane.showMessageDialog(this, "Ingrese una clave de 1 a 65", 
-                            "CLAVE FUERA DE RANGO", JOptionPane.ERROR_MESSAGE);
-        }
-        }catch(NumberFormatException nfe){
-            JOptionPane.showMessageDialog(this, "Ingresa solamente numeros enteros ", 
-                            "CARÁCTER INVALIDO", JOptionPane.ERROR_MESSAGE);  
-        }catch(RuntimeException e){
-            JOptionPane.showMessageDialog(this, "Situacion anomala en tiempo de ejecución, vuelve a intentarlo", 
-                            "SITUACION ANOMALA", JOptionPane.ERROR_MESSAGE);
-        }
+        accionBuscar();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        int clave, horas;
-        String nombre, departamento, titulo;
-        
-        try {
-            clave = Integer.parseInt(txtClave.getText());
-            nombre = txtNombre.getText();
-                if(nombre.length() > 40)
-                    nombre = nombre.substring(0, 40);
-            titulo = txtTitulo.getText();
-                if(titulo.length() > 30)
-                    titulo = titulo.substring(0, 30);
-            departamento = txtDepartamento.getText();
-                if(departamento.length() > 30)
-                    departamento = departamento.substring(0, 30);
-            horas = Integer.parseInt(txtHoras.getText());
-            
-            p = new Profesor(clave, nombre, titulo, departamento, horas);
-            Principal.ap.escribir(p);
-            
-            JOptionPane.showMessageDialog(this, "Modificado con exito",
-                        "MODIFICADO", JOptionPane.INFORMATION_MESSAGE);
-                this.dispose();
-            
-        } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(this, "Ingresa solamente numeros enteros donde corresponda", 
-                            "CARÁCTER INVALIDO", JOptionPane.ERROR_MESSAGE);
-        }
-        catch(RuntimeException e){
-            JOptionPane.showMessageDialog(this, "Situacion anomala en tiempo de ejecución, vuelve a intentarlo", 
-                            "SITUACIÓN ANOMALA", JOptionPane.ERROR_MESSAGE);
-        }
+        accionModificar();
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         this.dispose();
     }//GEN-LAST:event_formWindowClosed
+
+    private void txtClaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtClaveKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER)
+            accionBuscar();
+    }//GEN-LAST:event_txtClaveKeyPressed
+
+    private void txtHorasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHorasKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER)
+            accionModificar();
+    }//GEN-LAST:event_txtHorasKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;

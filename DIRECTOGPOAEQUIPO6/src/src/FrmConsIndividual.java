@@ -1,4 +1,5 @@
 package src;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 public class FrmConsIndividual extends javax.swing.JDialog {
     Profesor p;
@@ -6,6 +7,39 @@ public class FrmConsIndividual extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
+    
+    public void accionBuscar(){
+        try{
+        int clave, celda;
+        clave = Integer.parseInt(txtClave.getText());
+        if(clave > 0 && clave < 66){
+            celda = Principal.ap.getCelda(clave);
+            if(celda != -1){
+                p = Principal.ap.getProfesor(celda);
+                txtNombre.setText(p.getNombre());
+                txtTitulo.setText(p.getTitulo());
+                txtDepartamento.setText(p.getDepartamento());
+                txtHoras.setText(Integer.toString(p.getHoras()));
+                txtNombre.requestFocus();
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Clave inexistente",
+                        "INEXISTENTE", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Ingrese una clave de 1 a 65", 
+                            "CLAVE FUERA DE RANGO", JOptionPane.ERROR_MESSAGE);
+        }
+        }catch(NumberFormatException nfe){
+            JOptionPane.showMessageDialog(this, "Ingresa solamente numeros enteros ", 
+                            "CARÁCTER INVALIDO", JOptionPane.ERROR_MESSAGE);  
+        }catch(RuntimeException e){
+            JOptionPane.showMessageDialog(this, "Situacion anomala en tiempo de ejecución, vuelve a intentarlo", 
+                            "SITUACION ANOMALA", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -48,48 +82,62 @@ public class FrmConsIndividual extends javax.swing.JDialog {
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
         jLabel3.setText("Nombre:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
         jLabel4.setText("Titulo:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
         jLabel5.setText("Departamento:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
         jLabel6.setText("Horas:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
         txtClave.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         txtClave.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtClave.setOpaque(false);
+        txtClave.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtClaveKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 32, 133, -1));
 
         txtNombre.setEditable(false);
         txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        txtNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtNombre.setOpaque(false);
-        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 216, -1));
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 250, -1));
 
         txtTitulo.setEditable(false);
         txtTitulo.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        txtTitulo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtTitulo.setOpaque(false);
-        getContentPane().add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 216, -1));
+        getContentPane().add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 250, -1));
 
         txtDepartamento.setEditable(false);
         txtDepartamento.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         txtDepartamento.setAutoscrolls(false);
+        txtDepartamento.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtDepartamento.setOpaque(false);
-        getContentPane().add(txtDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 216, -1));
+        getContentPane().add(txtDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 250, -1));
 
         txtHoras.setEditable(false);
         txtHoras.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         txtHoras.setAutoscrolls(false);
+        txtHoras.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtHoras.setOpaque(false);
-        getContentPane().add(txtHoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 216, -1));
+        getContentPane().add(txtHoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 250, -1));
 
         btnBuscar.setText("Buscar");
+        btnBuscar.setBorderPainted(false);
+        btnBuscar.setContentAreaFilled(false);
+        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscar.setDefaultCapable(false);
+        btnBuscar.setFocusPainted(false);
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
@@ -110,42 +158,17 @@ public class FrmConsIndividual extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        try{
-        int clave, celda;
-        clave = Integer.parseInt(txtClave.getText());
-        if(clave > 0 && clave < 66){
-            celda = Principal.ap.getCelda(clave);
-            if(celda != -1){
-                p = Principal.ap.getProfesor(celda);
-                txtClave.setEditable(false);
-                btnBuscar.setEnabled(false);
-                txtNombre.setText(p.getNombre());
-                txtTitulo.setText(p.getTitulo());
-                txtDepartamento.setText(p.getDepartamento());
-                txtHoras.setText(Integer.toString(p.getHoras()));
-                txtNombre.requestFocus();
-            }
-            else{
-                JOptionPane.showMessageDialog(this, "Clave inexistente",
-                        "INEXISTENTE", JOptionPane.INFORMATION_MESSAGE);
-            }
-        }
-        else{
-            JOptionPane.showMessageDialog(this, "Ingrese una clave de 1 a 65", 
-                            "CLAVE FUERA DE RANGO", JOptionPane.ERROR_MESSAGE);
-        }
-        }catch(NumberFormatException nfe){
-            JOptionPane.showMessageDialog(this, "Ingresa solamente numeros enteros ", 
-                            "CARÁCTER INVALIDO", JOptionPane.ERROR_MESSAGE);  
-        }catch(RuntimeException e){
-            JOptionPane.showMessageDialog(this, "Situacion anomala en tiempo de ejecución, vuelve a intentarlo", 
-                            "SITUACION ANOMALA", JOptionPane.ERROR_MESSAGE);
-        }
+        accionBuscar();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         this.dispose();
     }//GEN-LAST:event_formWindowClosed
+
+    private void txtClaveKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtClaveKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER)
+            accionBuscar();
+    }//GEN-LAST:event_txtClaveKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;

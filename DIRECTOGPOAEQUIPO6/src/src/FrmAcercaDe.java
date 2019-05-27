@@ -237,7 +237,7 @@ public class FrmAcercaDe extends javax.swing.JDialog {
         br.setMaximumSize(new java.awt.Dimension(400, 350));
         br.setMinimumSize(new java.awt.Dimension(400, 350));
         br.setPreferredSize(new java.awt.Dimension(400, 350));
-        getContentPane().add(br, new org.netbeans.lib.awtextra.AbsoluteConstraints(-150, -40, 510, 680));
+        getContentPane().add(br, new org.netbeans.lib.awtextra.AbsoluteConstraints(-130, -30, 540, 680));
         br.getAccessibleContext().setAccessibleDescription("");
 
         pack();

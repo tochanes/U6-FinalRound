@@ -83,11 +83,12 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, -220, -1, -1));
 
         jMenu1.setText("Archivo");
+        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         opcAcercaDe.setFont(new java.awt.Font("Century Gothic", 2, 12)); // NOI18N
         opcAcercaDe.setText("Acerca de...");
-        opcAcercaDe.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        opcAcercaDe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         opcAcercaDe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcAcercaDeActionPerformed(evt);
@@ -97,7 +98,7 @@ public class Principal extends javax.swing.JFrame {
 
         opcSalir.setFont(new java.awt.Font("Century Gothic", 2, 12)); // NOI18N
         opcSalir.setText("Salir");
-        opcSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        opcSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         opcSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcSalirActionPerformed(evt);
@@ -108,11 +109,12 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Operaciones");
+        jMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         opcAltas.setFont(new java.awt.Font("Century Gothic", 2, 12)); // NOI18N
         opcAltas.setText("Altas");
-        opcAltas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        opcAltas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         opcAltas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcAltasActionPerformed(evt);
@@ -122,7 +124,7 @@ public class Principal extends javax.swing.JFrame {
 
         opcModifiacion.setFont(new java.awt.Font("Century Gothic", 2, 12)); // NOI18N
         opcModifiacion.setText("Modificacion");
-        opcModifiacion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        opcModifiacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         opcModifiacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcModifiacionActionPerformed(evt);
@@ -132,6 +134,7 @@ public class Principal extends javax.swing.JFrame {
 
         opcBajas.setFont(new java.awt.Font("Century Gothic", 2, 12)); // NOI18N
         opcBajas.setText("Baja");
+        opcBajas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         opcBajas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcBajasActionPerformed(evt);
@@ -142,11 +145,12 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Consultas");
+        jMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         opcIndividual.setFont(new java.awt.Font("Century Gothic", 2, 12)); // NOI18N
         opcIndividual.setText("Individual");
-        opcIndividual.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        opcIndividual.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         opcIndividual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcIndividualActionPerformed(evt);
@@ -156,7 +160,7 @@ public class Principal extends javax.swing.JFrame {
 
         opcGeneral.setFont(new java.awt.Font("Century Gothic", 2, 12)); // NOI18N
         opcGeneral.setText("General");
-        opcGeneral.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        opcGeneral.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         opcGeneral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcGeneralActionPerformed(evt);
@@ -172,7 +176,7 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void opcAltasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcAltasActionPerformed
-        if(ap.getCont() < 65){
+        if(ap.getCont() < 66){
             FrmAltas vis = new FrmAltas(this, true);
             vis.setVisible(true);
         }

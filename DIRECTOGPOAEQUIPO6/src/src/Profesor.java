@@ -7,7 +7,9 @@ public class Profesor {
     private String titulo;
     private String departamento;
     private int horas;
-
+    
+    public Profesor(){}
+    
     public Profesor(int clave, String nombre, String titulo, String departamento, int horas) {
         this.clave = clave;
         this.nombre = nombre;

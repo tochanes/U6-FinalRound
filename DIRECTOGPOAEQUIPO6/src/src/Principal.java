@@ -52,7 +52,7 @@ public class Principal extends javax.swing.JFrame {
         bienvenida.setText("BIENVENIDO");
         bienvenida.setBorderPainted(false);
         bienvenida.setContentAreaFilled(false);
-        bienvenida.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bienvenida.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         bienvenida.setDefaultCapable(false);
         bienvenida.setFocusPainted(false);
         bienvenida.addActionListener(new java.awt.event.ActionListener() {
@@ -67,7 +67,7 @@ public class Principal extends javax.swing.JFrame {
         usuario.setText("Estimado Usuario");
         usuario.setBorderPainted(false);
         usuario.setContentAreaFilled(false);
-        usuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        usuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         usuario.setDefaultCapable(false);
         usuario.setFocusPainted(false);
         usuario.setFocusable(false);
@@ -83,7 +83,7 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, -220, -1, -1));
 
         jMenu1.setText("Archivo");
-        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         opcAcercaDe.setFont(new java.awt.Font("Century Gothic", 2, 12)); // NOI18N
@@ -109,7 +109,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Operaciones");
-        jMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         opcAltas.setFont(new java.awt.Font("Century Gothic", 2, 12)); // NOI18N
@@ -145,7 +145,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Consultas");
-        jMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenu3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
 
         opcIndividual.setFont(new java.awt.Font("Century Gothic", 2, 12)); // NOI18N

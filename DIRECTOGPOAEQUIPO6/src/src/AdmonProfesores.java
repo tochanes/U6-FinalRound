@@ -103,7 +103,7 @@ public class AdmonProfesores {
             int horas = raf.readInt();
             p = new Profesor(clave, nombre, titulo, departamento, horas);
         } catch (EOFException e){
-        } catch (Exception e) {
+        } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), 
                             "EXCEPCION", JOptionPane.ERROR_MESSAGE);
         }

@@ -83,7 +83,7 @@ public class FrmConsGeneral extends javax.swing.JDialog {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jScrollPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jScrollPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane2.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         jScrollPane2.setOpaque(false);
 
@@ -99,7 +99,7 @@ public class FrmConsGeneral extends javax.swing.JDialog {
 
             }
         ));
-        tablaGeneral.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tablaGeneral.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tablaGeneral.setFocusable(false);
         tablaGeneral.setGridColor(new java.awt.Color(0, 204, 204));
         tablaGeneral.setOpaque(false);
@@ -142,6 +142,7 @@ public class FrmConsGeneral extends javax.swing.JDialog {
                 llenarLista();
                 setDatos(); 
             }while(true);
+        }catch(NullPointerException e){
         }catch(Exception e){
             
         }

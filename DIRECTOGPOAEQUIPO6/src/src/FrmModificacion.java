@@ -1,7 +1,7 @@
 package src;
 
 import java.awt.event.KeyEvent;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 public class FrmModificacion extends javax.swing.JDialog {
     Profesor p;
@@ -9,6 +9,7 @@ public class FrmModificacion extends javax.swing.JDialog {
     public FrmModificacion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/imagenes/logoITCG.png")).getImage());
     }
     
     public void accionBuscar(){
@@ -102,6 +103,7 @@ public class FrmModificacion extends javax.swing.JDialog {
         txtHoras = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -115,29 +117,29 @@ public class FrmModificacion extends javax.swing.JDialog {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 3, 11)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 2, 20)); // NOI18N
         jLabel1.setText("MODIFICACION");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 6, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
         jLabel2.setText("Clave:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 35, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
         jLabel3.setText("Nombre:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 64, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
         jLabel4.setText("Titulo:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 96, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
         jLabel5.setText("Departamento:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 128, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
         jLabel6.setText("Horas:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
         txtClave.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         txtClave.setOpaque(false);
@@ -146,38 +148,40 @@ public class FrmModificacion extends javax.swing.JDialog {
                 txtClaveKeyPressed(evt);
             }
         });
-        getContentPane().add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 32, 122, -1));
+        getContentPane().add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 122, -1));
 
         txtNombre.setEditable(false);
         txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        txtNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtNombre.setOpaque(false);
-        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 61, 250, -1));
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 250, -1));
 
         txtTitulo.setEditable(false);
         txtTitulo.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        txtTitulo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtTitulo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtTitulo.setOpaque(false);
-        getContentPane().add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 93, 250, -1));
+        getContentPane().add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 250, -1));
 
         txtDepartamento.setEditable(false);
         txtDepartamento.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        txtDepartamento.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtDepartamento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtDepartamento.setOpaque(false);
-        getContentPane().add(txtDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 125, 250, -1));
+        getContentPane().add(txtDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 250, -1));
 
         txtHoras.setEditable(false);
         txtHoras.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        txtHoras.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtHoras.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtHoras.setOpaque(false);
         txtHoras.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtHorasKeyPressed(evt);
             }
         });
-        getContentPane().add(txtHoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 157, 250, -1));
+        getContentPane().add(txtHoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 250, -1));
 
-        btnBuscar.setText("Buscar");
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/bscr.png"))); // NOI18N
+        btnBuscar.setText(" ");
+        btnBuscar.setToolTipText("BUSCAR");
         btnBuscar.setBorderPainted(false);
         btnBuscar.setContentAreaFilled(false);
         btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -188,9 +192,11 @@ public class FrmModificacion extends javax.swing.JDialog {
                 btnBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 32, -1, -1));
+        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, -1, -1));
 
-        btnModificar.setText("Modificar");
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/acp.png"))); // NOI18N
+        btnModificar.setText(" ");
+        btnModificar.setToolTipText("MODIFICAR");
         btnModificar.setBorderPainted(false);
         btnModificar.setContentAreaFilled(false);
         btnModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -202,7 +208,23 @@ public class FrmModificacion extends javax.swing.JDialog {
                 btnModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 189, 191, -1));
+        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 191, -1));
+
+        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vlvr.jpg"))); // NOI18N
+        btnVolver.setText(" ");
+        btnVolver.setToolTipText("VOLVER");
+        btnVolver.setBorderPainted(false);
+        btnVolver.setContentAreaFilled(false);
+        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVolver.setDefaultCapable(false);
+        btnVolver.setFocusPainted(false);
+        btnVolver.setFocusable(false);
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         fondo.setText(" ");
@@ -234,9 +256,14 @@ public class FrmModificacion extends javax.swing.JDialog {
             accionModificar();
     }//GEN-LAST:event_txtHorasKeyPressed
 
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

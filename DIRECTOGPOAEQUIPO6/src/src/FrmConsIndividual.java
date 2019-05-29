@@ -1,11 +1,12 @@
 package src;
 import java.awt.event.KeyEvent;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 public class FrmConsIndividual extends javax.swing.JDialog {
     Profesor p;
     public FrmConsIndividual(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+         setIconImage(new ImageIcon(getClass().getResource("/imagenes/logoITCG.png")).getImage());
     }
     
     public void accionBuscar(){
@@ -56,6 +57,7 @@ public class FrmConsIndividual extends javax.swing.JDialog {
         txtDepartamento = new javax.swing.JTextField();
         txtHoras = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -72,29 +74,29 @@ public class FrmConsIndividual extends javax.swing.JDialog {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Century Gothic", 3, 11)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 2, 20)); // NOI18N
         jLabel1.setText("INDIVIDUAL");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 6, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
         jLabel2.setText("Clave:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 35, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
         jLabel3.setText("Nombre:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
         jLabel4.setText("Titulo:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
         jLabel5.setText("Departamento:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 11)); // NOI18N
         jLabel6.setText("Horas:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
         txtClave.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         txtClave.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -104,35 +106,37 @@ public class FrmConsIndividual extends javax.swing.JDialog {
                 txtClaveKeyPressed(evt);
             }
         });
-        getContentPane().add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 32, 133, -1));
+        getContentPane().add(txtClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 133, -1));
 
         txtNombre.setEditable(false);
         txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        txtNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtNombre.setOpaque(false);
-        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 250, -1));
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 250, -1));
 
         txtTitulo.setEditable(false);
         txtTitulo.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        txtTitulo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtTitulo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtTitulo.setOpaque(false);
-        getContentPane().add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 250, -1));
+        getContentPane().add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 250, -1));
 
         txtDepartamento.setEditable(false);
         txtDepartamento.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         txtDepartamento.setAutoscrolls(false);
-        txtDepartamento.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtDepartamento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtDepartamento.setOpaque(false);
-        getContentPane().add(txtDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 250, -1));
+        getContentPane().add(txtDepartamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 250, -1));
 
         txtHoras.setEditable(false);
         txtHoras.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         txtHoras.setAutoscrolls(false);
-        txtHoras.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtHoras.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtHoras.setOpaque(false);
-        getContentPane().add(txtHoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 250, -1));
+        getContentPane().add(txtHoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 250, -1));
 
-        btnBuscar.setText("Buscar");
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/bscr.png"))); // NOI18N
+        btnBuscar.setText(" ");
+        btnBuscar.setToolTipText("BUSCAR");
         btnBuscar.setBorderPainted(false);
         btnBuscar.setContentAreaFilled(false);
         btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -143,14 +147,30 @@ public class FrmConsIndividual extends javax.swing.JDialog {
                 btnBuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 31, -1, -1));
+        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, -1, -1));
+
+        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vlvr.jpg"))); // NOI18N
+        btnVolver.setText(" ");
+        btnVolver.setToolTipText("VOLVER");
+        btnVolver.setBorderPainted(false);
+        btnVolver.setContentAreaFilled(false);
+        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVolver.setDefaultCapable(false);
+        btnVolver.setFocusPainted(false);
+        btnVolver.setFocusable(false);
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         fondo.setText(" ");
         fondo.setMaximumSize(new java.awt.Dimension(400, 350));
         fondo.setMinimumSize(new java.awt.Dimension(400, 350));
         fondo.setPreferredSize(new java.awt.Dimension(400, 350));
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -340, 530, 680));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -320, 530, 680));
         fondo.getAccessibleContext().setAccessibleDescription("");
 
         pack();
@@ -170,8 +190,13 @@ public class FrmConsIndividual extends javax.swing.JDialog {
             accionBuscar();
     }//GEN-LAST:event_txtClaveKeyPressed
 
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
